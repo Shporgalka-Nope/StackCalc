@@ -10,12 +10,22 @@ namespace StackCalc
 {
     public class CStack
     {
-        Node? head;
+        public Node? head;
 
         public void Push(string data)
         {
-            if (!Single.TryParse(data, out float result)) { Fabric fabric = new Fabric(data); }
-            if (head == null) { head = new Node(result); }
+            if (!Single.TryParse(data, out float result)) 
+            { 
+                Fabric fabric = new Fabric(data);
+                IOperation operation = fabric.GetOperation();
+                operation.Run(this);
+                return;
+            }
+            if (head == null) 
+            {
+                head = new Node(result);
+                return;
+            }
 
             Node newNode = new Node(result);
             newNode.next = head;

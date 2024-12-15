@@ -32,6 +32,14 @@ namespace StackCalc
             {
                 case "+":
                     return new Plus();
+                case "-":
+                    return new Minus();
+                case "*":
+                    return new Myltiplication();
+                case "/":
+                    return new Division();
+                default:
+                    throw new InvalidOperationException();
             }
         }
     }

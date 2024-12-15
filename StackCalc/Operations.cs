@@ -6,14 +6,6 @@ using System.Threading.Tasks;
 
 namespace StackCalc
 {
-    public enum OperationType
-    {
-        Plus,
-        Minus,
-        Division,
-        Multiplication
-    }
-
     public class Plus : IOperation
     {
         public void Run(CStack stack)
@@ -21,8 +13,40 @@ namespace StackCalc
             Node elementTwo = stack.Pop();
             Node elementOne = stack.Pop();
             float result = elementOne.data + elementTwo.data;
-            string str = "";
-            stack.Push(str += result);
+            stack.Push(result.ToString());
+        }
+    }
+
+    public class Minus : IOperation
+    {
+        public void Run(CStack stack)
+        {
+            Node elementTwo = stack.Pop();
+            Node elementOne = stack.Pop();
+            float result = elementOne.data - elementTwo.data;
+            stack.Push(result.ToString());
+        }
+    }
+
+    public class Myltiplication : IOperation
+    {
+        public void Run(CStack stack)
+        {
+            Node elementTwo = stack.Pop();
+            Node elementOne = stack.Pop();
+            float result = elementOne.data * elementTwo.data;
+            stack.Push(result.ToString());
+        }
+    }
+
+    public class Division : IOperation
+    {
+        public void Run(CStack stack)
+        {
+            Node elementTwo = stack.Pop();
+            Node elementOne = stack.Pop();
+            float result = elementOne.data / elementTwo.data;
+            stack.Push(result.ToString());
         }
     }
 }
